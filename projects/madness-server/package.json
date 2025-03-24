@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "extends": "../../tsconfig.json",
   "type": "module",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "build": "yarn tsc",
     "start": "node ./dist/index.js",
@@ -14,6 +16,7 @@
     "cbbd": "^1.20.0",
     "create-typed-sdk": "^1.0.9",
     "fastify": "^5.2.1",
+    "firebase-admin": "^13.2.0",
     "madness-shared": "link:../madness-shared",
     "tsc-watch": "^6.2.1"
   },

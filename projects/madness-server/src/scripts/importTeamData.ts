@@ -1,12 +1,14 @@
-import { getAllGames } from "../endpoints/games/getAllGames.js";
-import { getAllTeamSeasonStats } from "../endpoints/teams/getAllTeamSeasonStats.js";
-import { getAllTeams } from "../endpoints/teams/getAllTeams.js";
+import { getAllGamesFromApi } from "../endpoints/games/getAllGamesFromApi.js";
+import { getAllTeamSeasonStatsFromApi } from "../endpoints/teams/getAllTeamSeasonStatsFromApi.js";
+import { getAllTeamsFromAPI } from "../endpoints/teams/getAllTeamsFromApi.js";
+import { FirestoreCollections } from "madness-shared";
+import { s_fb } from "../services/index.js";
 
 async function main() {
   const [games, teams, teamSeasonStats] = await Promise.all([
-    getAllGames({}),
-    getAllTeams({}),
-    getAllTeamSeasonStats({}),
+    getAllGamesFromApi({}),
+    getAllTeamsFromAPI({}),
+    getAllTeamSeasonStatsFromApi({}),
   ]);
 
   const uniqueTeamIdMap = games.reduce((acc, val) => {
@@ -20,9 +22,21 @@ async function main() {
     (tss) => uniqueTeamIdMap[tss.teamId]
   );
 
-  console.log(games.length, "bYYUIuIFKG");
-  console.log(filteredTeams.length, "bYYUIuIFKG");
-  console.log(filteredTeamSeasonStats.length, "bYYUIuIFKG");
+  games.map(async (game) => {
+    await s_fb.setDoc(FirestoreCollections.games, game.id, game);
+  });
+
+  filteredTeams.map(async (team) => {
+    await s_fb.setDoc(FirestoreCollections.teams, team.id, team);
+  });
+
+  filteredTeamSeasonStats.map(async (stats) => {
+    await s_fb.setDoc(
+      FirestoreCollections.teamSeasonStats,
+      stats.teamId,
+      stats
+    );
+  });
 }
 
 main();

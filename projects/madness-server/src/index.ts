@@ -1,6 +1,9 @@
+export * as api from "./endpoints/index.js";
+
 import fastify from "fastify";
 import { AsyncFn, collectApiFunctions } from "create-typed-sdk";
 import * as endpoints from "./endpoints/index.js";
+import cors from "@fastify/cors";
 
 const PATH_PREFIX_FOR_UNTRUSTED = "/api/";
 
@@ -8,7 +11,6 @@ const app = fastify({
   disableRequestLogging: true,
   requestTimeout: 5000,
 });
-import cors from "@fastify/cors";
 
 app.register(cors, { origin: "*" });
 
@@ -22,15 +24,13 @@ app.get("/", async () => {
 collectApiFunctions(endpoints).forEach((a) => {
   const path = a.path.join("/");
   const fullPath = PATH_PREFIX_FOR_UNTRUSTED + path;
-  console.log("+++++++++++++++++++", "BBpbXARJFf");
-  console.log(fullPath, "5tTpp2X6sl");
   app.post(fullPath, async (req, res) => {
     await clientPostHandler(a.path, a.fn, req, res);
   });
 });
 
 function main() {
-  console.log("Start server on port 3040", "ouskBzVPTm");
+  console.log("Start server on port 3020", "ouskBzVPTm");
   app.listen({ port: 3020, host: "0.0.0.0" }, (err, address) => {
     if (err) throw err;
     console.log(`Server is now listening on ${address}`);

@@ -1,0 +1,27 @@
+{
+  "name": "madness-web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4",
+    "typescript": "^5.8.2"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "axios": "^1.8.4",
+    "create-typed-react-sdk": "^1.0.9",
+    "create-typed-sdk": "^1.0.9",
+    "madness-server": "link:../madness-server",
+    "madness-shared": "link:../madness-shared",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "vite": "^6.2.3"
+  }
+}

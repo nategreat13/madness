@@ -1,2 +1,2 @@
-export * from "./getAllTeams.js";
-export * from "./getAllTeamSeasonStats.js";
+export * from "./getAllTeamsFromApi.js";
+export * from "./getAllTeamSeasonStatsFromApi.js";

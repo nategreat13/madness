@@ -1,20 +1,11 @@
-import { config } from "madness-shared";
-import { getGames } from "cbbd";
+import { FirestoreCollections, Game } from "madness-shared";
+import {} from "../../services/fb.service.js";
+import { s_fb } from "../../services/index.js";
 
 export async function getAllGames(p: {}) {
   try {
-    const games =
-      (
-        await getGames({
-          query: {
-            season: 2025,
-            tournament: "NCAA",
-          },
-          auth: config.CBBD_API_KEY,
-        })
-      ).data ?? [];
-
-    return games;
+    const data = await s_fb.getAllDocsInCollection(FirestoreCollections.games);
+    return data as Game[];
   } catch (e) {
     return [];
   }

@@ -1,7 +1,7 @@
 import { config } from "madness-shared";
 import { getTeams } from "cbbd";
 
-export async function getAllTeams(p: {}) {
+export async function getAllTeamsFromAPI(p: {}) {
   try {
     const teams =
       (

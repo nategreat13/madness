@@ -7,6 +7,7 @@
   ],
   "scripts": {
     "dev1": "run-p --print-label core:*",
+    "dev2": "yarn --cwd ./projects/madness-web dev",
     "=======CORE=======": "",
     "core": "run-p --print-label core:* ",
     "core:shared": "yarn --cwd ./projects/madness-shared ts-watch",
