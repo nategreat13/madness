@@ -1,0 +1,23 @@
+{
+  "name": "madness-server",
+  "version": "1.0.0",
+  "extends": "../../tsconfig.json",
+  "type": "module",
+  "scripts": {
+    "build": "yarn tsc",
+    "start": "node ./dist/index.js",
+    "devServer": "tsc-watch --noClear --onSuccess 'node ./dist/index.js'",
+    "ts-watch": "tsc --watch --preserveWatchOutput"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.0.0",
+    "cbbd": "^1.20.0",
+    "create-typed-sdk": "^1.0.9",
+    "fastify": "^5.2.1",
+    "madness-shared": "link:../madness-shared",
+    "tsc-watch": "^6.2.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  }
+}

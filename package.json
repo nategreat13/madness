@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "madness",
+  "version": "1.0.0",
+  "workspaces": [
+    "projects/*"
+  ],
+  "scripts": {
+    "dev1": "run-p --print-label core:*",
+    "=======CORE=======": "",
+    "core": "run-p --print-label core:* ",
+    "core:shared": "yarn --cwd ./projects/madness-shared ts-watch",
+    "core:server": "yarn --cwd ./projects/madness-server devServer"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  }
+}
